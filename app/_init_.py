@@ -1,5 +1,12 @@
-"""
-Pacote principal do Sistema de Gestão de Estoque – Bom Vizinho.
+from flask import Flask
 
-Aqui ficará a configuração da aplicação.
-"""
+
+def create_app():
+    """Cria e configura a aplicação Flask."""
+    app = Flask(__name__)
+
+    @app.route("/")
+    def inicio():
+        return "Sistema de Gestão de Estoque - Bom Vizinho"
+
+    return app
