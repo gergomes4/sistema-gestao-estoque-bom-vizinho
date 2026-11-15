@@ -79,7 +79,47 @@
             outline: 3px solid #e09b00;
             outline-offset: 3px;
         }
+
+        .acessibilidade {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+             margin: 20px 0;
+        }
+
+      .acessibilidade button {
+           width: auto;
+           padding: 12px 18px;
+           cursor: pointer;
+       }
+
+      input, button {
+          font-size: 1rem;
+       }
+
+      body {
+         font-size: 16px;
+      }
     </style>
+
+    <script>
+    let tamanhoFonte = 16;
+
+    function alterarFonte(valor) {
+        if (valor === 0) {
+            tamanhoFonte = 16;
+        } else {
+            tamanhoFonte += valor;
+        }
+
+        tamanhoFonte = Math.max(12, Math.min(26, tamanhoFonte));
+
+        document.body.style.fontSize = tamanhoFonte + "px";
+
+        document.getElementById("aviso-fonte").textContent =
+            "Tamanho da fonte: " + tamanhoFonte + " pixels.";
+    }
+    </script>
 </head>
 
 <body>
@@ -87,6 +127,22 @@
         <h1>Mercadinho Bom Vizinho</h1>
         <p>Sistema de Gestão de Estoque</p>
     </header>
+
+    <nav class="acessibilidade" aria-label="Opções de acessibilidade">
+    <button type="button" onclick="alterarFonte(2)">
+        Aumentar fonte (+)
+    </button>
+
+    <button type="button" onclick="alterarFonte(-2)">
+        Diminuir fonte (-)
+    </button>
+
+    <button type="button" onclick="alterarFonte(0)">
+        Restaurar fonte
+    </button>
+</nav>
+
+<p id="aviso-fonte" aria-live="polite"></p>
 
     <main>
         <p><a href="/">Voltar à página inicial</a></p>
